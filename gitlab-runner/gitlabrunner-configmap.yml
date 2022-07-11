@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitlab-runner
+  namespace: gitlab
+data:
+  config.toml: |
+    concurrent = 1
+
+    [[runners]]
+      name = "Kubernetes Runner"
+      url = "GitlabURL comes here /ci/"
+      token = "Gitlab token comes here"
+      executor = "kubernetes"
+      [runners.kubernetes]
+        namespace = "gitlab"
+        image = "busybox"
